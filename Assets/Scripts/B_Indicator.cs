@@ -16,7 +16,6 @@ public class B_Indicator : MonoBehaviour
     private float elapsedTime = 0f;
     private float currentSize;
 
-
     public enum B_State
     {
         Idle,
