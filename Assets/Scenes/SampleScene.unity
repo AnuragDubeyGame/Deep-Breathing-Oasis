@@ -1767,9 +1767,9 @@ MonoBehaviour:
   b_Hd: {fileID: 436413841}
   b_Ot: {fileID: 641285422}
   p_Bar: {fileID: 1728264748}
-  b_In_Duration: 2
-  b_Hd_Duration: 5
-  b_Ot_Duration: 8
+  b_In_Duration: 1
+  b_Hd_Duration: 1
+  b_Ot_Duration: 1
   delayBetweenLvlStart: 1
   noOfTimesToRepeat: 2
   rec_b_state: 0
@@ -2104,6 +2104,7 @@ MonoBehaviour:
   maxSize: 5
   LevelCompleteMenu: {fileID: 1405240218}
   ScoreText: {fileID: 1278553932}
+  Menu_ScoreText: {fileID: 756416516}
   b_state: 0
 --- !u!1 &1830812122
 GameObject:

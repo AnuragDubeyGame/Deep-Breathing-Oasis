@@ -12,7 +12,7 @@ public class B_Indicator : MonoBehaviour
     [SerializeField] private GameObject LevelCompleteMenu;
 
     private float CurrentScore;
-    [SerializeField] private TextMeshProUGUI ScoreText;
+    [SerializeField] private TextMeshProUGUI ScoreText, Menu_ScoreText;
      
     private float GrowthSpeed, ShrinkSpeed;
     private B_Meter b_meter;
@@ -39,6 +39,7 @@ public class B_Indicator : MonoBehaviour
     {
         isLevelFinished = true;
         LevelCompleteMenu.SetActive(true);
+        Menu_ScoreText.text = CurrentScore.ToString("F1");
         resetGameLevelState();
     }
 
@@ -105,9 +106,14 @@ public class B_Indicator : MonoBehaviour
         currentSize = minSize;
         CurrentScore = 0;
         UpdateScore(ScoreText,0);
-        LevelCompleteMenu.SetActive(false);
         b_meter.resetMeterBar();
+        LevelCompleteMenu.SetActive(false);
+        GrowthSpeed = (maxSize - minSize) / b_meter.b_In_Duration;
+        ShrinkSpeed = (maxSize - minSize) / b_meter.b_Ot_Duration;
         isLevelFinished = false;
+
+        //Update Level Name
+        //Add Array of Levels
     }
 }
 
