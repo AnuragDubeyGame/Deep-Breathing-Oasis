@@ -8,6 +8,7 @@ public class B_Meter : MonoBehaviour
     public event Action OnProgressBarFilled;
     [SerializeField] private Image b_In, b_Hd, b_Ot, p_Bar;
     [SerializeField] public float b_In_Duration, b_Hd_Duration, b_Ot_Duration, delayBetweenLvlStart;
+    [SerializeField] private int noOfTimesToRepeat;
 
     private float total_Duration, oneRound_Duration;
     private float timeElapsed = 0;
@@ -16,7 +17,7 @@ public class B_Meter : MonoBehaviour
     void Start()
     {
         rec_b_state = B_State.Idle;
-        StartCoroutine(StartBreathPattern(3));
+        StartCoroutine(StartBreathPattern(noOfTimesToRepeat));
     }
 
     public IEnumerator StartBreathPattern(int noOfTimes)
@@ -44,6 +45,20 @@ public class B_Meter : MonoBehaviour
             te += Time.deltaTime;
         }
         OnProgressBarFilled?.Invoke();
+    }
+    public void resetMeterBar()
+    {
+        p_Bar.fillAmount = 0f;
+        b_In.fillAmount = 0f;
+        b_Hd.fillAmount = 0f;
+        b_Ot.fillAmount = 0f;
+        timeElapsed = 0f;
+        rec_b_state = B_State.Idle;
+        b_In_Duration = 2f;
+        b_Hd_Duration = 2f;
+        b_Ot_Duration = 2f;
+        delayBetweenLvlStart = 1f;
+        StartCoroutine(StartBreathPattern(noOfTimesToRepeat));
     }
 
     public IEnumerator StartB_Meter()

@@ -1767,10 +1767,11 @@ MonoBehaviour:
   b_Hd: {fileID: 436413841}
   b_Ot: {fileID: 641285422}
   p_Bar: {fileID: 1728264748}
-  b_In_Duration: 3
-  b_Hd_Duration: 3
-  b_Ot_Duration: 3
+  b_In_Duration: 2
+  b_Hd_Duration: 5
+  b_Ot_Duration: 8
   delayBetweenLvlStart: 1
+  noOfTimesToRepeat: 2
   rec_b_state: 0
 --- !u!4 &1716526884
 Transform:
@@ -2099,7 +2100,6 @@ MonoBehaviour:
   b_In_Colour: {r: 0.24705884, g: 0.85098046, b: 0.10980393, a: 1}
   b_Hd_Colour: {r: 0.85098046, g: 0.10980393, b: 0.7803922, a: 1}
   b_Ot_Colour: {r: 0.85098046, g: 0.82745105, b: 0.10980393, a: 1}
-  growSpeed: 1
   minSize: 1
   maxSize: 5
   LevelCompleteMenu: {fileID: 1405240218}

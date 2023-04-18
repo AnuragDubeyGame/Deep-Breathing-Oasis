@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEditorInternal.VersionControl.ListControl;
 
 public class B_Indicator : MonoBehaviour
 {
     [SerializeField] private Color b_Idle_Colour, b_In_Colour, b_Hd_Colour, b_Ot_Colour;
-    [SerializeField] private float growSpeed, minSize, maxSize;
+    [SerializeField] private float minSize, maxSize;
     [SerializeField] private GameObject LevelCompleteMenu;
 
     private float CurrentScore;
@@ -59,7 +60,7 @@ public class B_Indicator : MonoBehaviour
             b_state = B_State.In;
             sr.color = b_In_Colour;
 
-            currentSize = transform.localScale.x + growSpeed * Time.deltaTime;
+            currentSize = transform.localScale.x + GrowthSpeed * Time.deltaTime;
             currentSize = Mathf.Clamp(currentSize, minSize, maxSize);
             transform.localScale = new Vector3(currentSize, currentSize);
 
@@ -101,8 +102,11 @@ public class B_Indicator : MonoBehaviour
     }
     public void PlayNextLevel()
     {
-        // Set all variables for next level
+        currentSize = minSize;
+        CurrentScore = 0;
+        UpdateScore(ScoreText,0);
         LevelCompleteMenu.SetActive(false);
+        b_meter.resetMeterBar();
         isLevelFinished = false;
     }
 }
