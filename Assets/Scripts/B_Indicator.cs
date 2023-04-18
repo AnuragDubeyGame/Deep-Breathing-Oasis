@@ -32,13 +32,13 @@ public class B_Indicator : MonoBehaviour
         transform.localScale = new Vector2(currentSize, currentSize);
         GrowthSpeed = (maxSize - minSize) / b_meter.b_In_Duration;
         ShrinkSpeed = (maxSize - minSize) / b_meter.b_Ot_Duration;
-        print(GrowthSpeed);
     }
 
     private void B_meter_OnProgressBarFilled()
     {
         isLevelFinished = true;
         LevelCompleteMenu.SetActive(true);
+        resetGameLevelState();
     }
 
     private void Update()
@@ -92,6 +92,18 @@ public class B_Indicator : MonoBehaviour
     private void UpdateScore(TextMeshProUGUI text,float score)
     {
         text.text = score.ToString("F1");
+    }
+    private void resetGameLevelState()
+    {
+        transform.localScale = new Vector3(minSize, minSize, minSize);
+        b_state = B_State.Idle;
+        sr.color = b_Idle_Colour;
+    }
+    public void PlayNextLevel()
+    {
+        // Set all variables for next level
+        LevelCompleteMenu.SetActive(false);
+        isLevelFinished = false;
     }
 }
 
