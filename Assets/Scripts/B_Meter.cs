@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class B_Meter : MonoBehaviour
 {
+    public event Action OnProgressBarFilled;
     [SerializeField] private Image b_In, b_Hd, b_Ot, p_Bar;
     [SerializeField] public float b_In_Duration, b_Hd_Duration, b_Ot_Duration, delayBetweenLvlStart;
 
@@ -41,7 +43,7 @@ public class B_Meter : MonoBehaviour
             yield return null;
             te += Time.deltaTime;
         }
-
+        OnProgressBarFilled?.Invoke();
     }
 
     public IEnumerator StartB_Meter()

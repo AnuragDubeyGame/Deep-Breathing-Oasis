@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using static UnityEditorInternal.VersionControl.ListControl;
 
@@ -8,19 +9,23 @@ public class B_Indicator : MonoBehaviour
     [SerializeField] private Color b_Idle_Colour, b_In_Colour, b_Hd_Colour, b_Ot_Colour;
     [SerializeField] private float growSpeed, minSize, maxSize;
 
-    private float GrowthSpeed, ShrinkSpeed;
+    private float CurrentScore;
+    [SerializeField] private TextMeshProUGUI ScoreText;
      
+    private float GrowthSpeed, ShrinkSpeed;
     private B_Meter b_meter;
     private SpriteRenderer sr;
     public B_State b_state;
     private float currentSize;
-
+    private bool isLevelFinished = false;
 
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
         b_meter = FindObjectOfType<B_Meter>();
+        b_meter.OnProgressBarFilled += B_meter_OnProgressBarFilled;
         b_state = B_State.Idle;
+        CurrentScore = 0f;
         currentSize = minSize;
         transform.localScale = new Vector2(currentSize, currentSize);
         GrowthSpeed = (maxSize - minSize) / b_meter.b_In_Duration;
@@ -28,15 +33,23 @@ public class B_Indicator : MonoBehaviour
         print(GrowthSpeed);
     }
 
+    private void B_meter_OnProgressBarFilled()
+    {
+        isLevelFinished = true;
+    }
+
     private void Update()
     {
+        if (isLevelFinished) return;
         if(b_state == b_meter.rec_b_state)
         {
-            print("+++ Increase Score +++");
+            CurrentScore += 25 * Time.deltaTime;
+            UpdateScore(ScoreText, CurrentScore);
         }
         else
         {
-            print("--- Decrease Score ----");
+            CurrentScore -= 40 * Time.deltaTime;
+            UpdateScore(ScoreText, CurrentScore);
         }
         if(Input.GetKey(KeyCode.I))
         {
@@ -73,7 +86,10 @@ public class B_Indicator : MonoBehaviour
         Debug.Log("Current State: " + b_state);
     }
 
-    
+    private void UpdateScore(TextMeshProUGUI text,float score)
+    {
+        text.text = score.ToString();
+    }
 }
 
 public enum B_State
