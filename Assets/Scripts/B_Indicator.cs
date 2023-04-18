@@ -8,6 +8,7 @@ public class B_Indicator : MonoBehaviour
 {
     [SerializeField] private Color b_Idle_Colour, b_In_Colour, b_Hd_Colour, b_Ot_Colour;
     [SerializeField] private float growSpeed, minSize, maxSize;
+    [SerializeField] private GameObject LevelCompleteMenu;
 
     private float CurrentScore;
     [SerializeField] private TextMeshProUGUI ScoreText;
@@ -21,6 +22,7 @@ public class B_Indicator : MonoBehaviour
 
     void Start()
     {
+        LevelCompleteMenu.SetActive(false);
         sr = GetComponent<SpriteRenderer>();
         b_meter = FindObjectOfType<B_Meter>();
         b_meter.OnProgressBarFilled += B_meter_OnProgressBarFilled;
@@ -36,6 +38,7 @@ public class B_Indicator : MonoBehaviour
     private void B_meter_OnProgressBarFilled()
     {
         isLevelFinished = true;
+        LevelCompleteMenu.SetActive(true);
     }
 
     private void Update()
@@ -88,7 +91,7 @@ public class B_Indicator : MonoBehaviour
 
     private void UpdateScore(TextMeshProUGUI text,float score)
     {
-        text.text = score.ToString();
+        text.text = score.ToString("F1");
     }
 }
 
