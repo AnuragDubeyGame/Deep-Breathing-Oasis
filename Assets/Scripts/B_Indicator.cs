@@ -8,21 +8,14 @@ public class B_Indicator : MonoBehaviour
     [SerializeField] private Color b_Idle_Colour, b_In_Colour, b_Hd_Colour, b_Ot_Colour;
     [SerializeField] private float growSpeed, minSize, maxSize;
 
-    private float GrowthSpeed, HoldSpeed, ShrinkSpeed;
-
+    private float GrowthSpeed, ShrinkSpeed;
+     
     private B_Meter b_meter;
     private SpriteRenderer sr;
     public B_State b_state;
-    private float elapsedTime = 0f;
     private float currentSize;
 
-    public enum B_State
-    {
-        Idle,
-        In,
-        Hold,
-        Out
-    }
+
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
@@ -37,6 +30,14 @@ public class B_Indicator : MonoBehaviour
 
     private void Update()
     {
+        if(b_state == b_meter.rec_b_state)
+        {
+            print("+++ Increase Score +++");
+        }
+        else
+        {
+            print("--- Decrease Score ----");
+        }
         if(Input.GetKey(KeyCode.I))
         {
             b_state = B_State.In;
@@ -73,4 +74,12 @@ public class B_Indicator : MonoBehaviour
     }
 
     
+}
+
+public enum B_State
+{
+    Idle,
+    In,
+    Hold,
+    Out
 }

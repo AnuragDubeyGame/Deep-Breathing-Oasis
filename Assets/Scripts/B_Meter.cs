@@ -9,9 +9,11 @@ public class B_Meter : MonoBehaviour
 
     private float total_Duration, oneRound_Duration;
     private float timeElapsed = 0;
+    public B_State rec_b_state;
 
     void Start()
     {
+        rec_b_state = B_State.Idle;
         StartCoroutine(StartBreathPattern(3));
     }
 
@@ -45,7 +47,7 @@ public class B_Meter : MonoBehaviour
     public IEnumerator StartB_Meter()
     {
         yield return new WaitForSeconds(delayBetweenLvlStart);
-
+        rec_b_state = B_State.In;
         while (timeElapsed < b_In_Duration)
         {
             float t = timeElapsed / b_In_Duration;
@@ -55,6 +57,7 @@ public class B_Meter : MonoBehaviour
         }
 
         timeElapsed = 0;
+        rec_b_state = B_State.Hold;
         while (timeElapsed < b_Hd_Duration)
         {
             float t = timeElapsed / b_Hd_Duration;
@@ -63,6 +66,7 @@ public class B_Meter : MonoBehaviour
             timeElapsed += Time.deltaTime;
         }
         timeElapsed = 0;
+        rec_b_state = B_State.Out;
         while (timeElapsed < b_Ot_Duration)
         {
             float t = timeElapsed / b_Ot_Duration;
