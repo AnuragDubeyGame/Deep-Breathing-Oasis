@@ -13,16 +13,19 @@ public class B_Meter : MonoBehaviour
     [SerializeField] public float b_In_Duration, b_Hd_Duration, b_Ot_Duration, delayBetweenLvlStart;
     [SerializeField] private int noOfTimesToRepeat;
     [SerializeField] private int maxlevel;
-    
+    [SerializeField] private GameObject GameEndManu;
+
     public List<Levels> LevelList = new List<Levels>();
     private int currentLevel;
     private float total_Duration, oneRound_Duration;
     private float timeElapsed = 0;
+    private B_Indicator b_indicator;
     public B_State rec_b_state;
 
     void Start()
     {
         currentLevel = 0;
+        b_indicator = FindObjectOfType<B_Indicator>();
         level_Name_Text.text = LevelList[currentLevel].LvlName;
         level_No_Text.text = currentLevel.ToString() + ". ";
         rec_b_state = B_State.Idle;
@@ -72,6 +75,8 @@ public class B_Meter : MonoBehaviour
         else
         {
             print("Game Ended!");
+            b_indicator.isLevelFinished = true;
+            GameEndManu.SetActive(true);
             // Show Game End Screen But first Disable 'NextLevel' Game Logic.
         }
         b_In_Duration = LevelList[currentLevel].b_In_Duration;

@@ -19,7 +19,7 @@ public class B_Indicator : MonoBehaviour
     private SpriteRenderer sr;
     public B_State b_state;
     private float currentSize;
-    private bool isLevelFinished = false;
+    public bool isLevelFinished = false;
 
     void Start()
     {
@@ -114,6 +114,10 @@ public class B_Indicator : MonoBehaviour
 
         //Update Level Name
         //Add Array of Levels
+    }
+    public void Quit()
+    {
+        Application.Quit();
     }
 }
 
