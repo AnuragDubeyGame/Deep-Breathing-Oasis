@@ -1,5 +1,7 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,15 +9,22 @@ public class B_Meter : MonoBehaviour
 {
     public event Action OnProgressBarFilled;
     [SerializeField] private Image b_In, b_Hd, b_Ot, p_Bar;
+    [SerializeField] private TextMeshProUGUI level_Name_Text, level_No_Text;
     [SerializeField] public float b_In_Duration, b_Hd_Duration, b_Ot_Duration, delayBetweenLvlStart;
     [SerializeField] private int noOfTimesToRepeat;
-
+    [SerializeField] private int maxlevel;
+    
+    public List<Levels> LevelList = new List<Levels>();
+    private int currentLevel;
     private float total_Duration, oneRound_Duration;
     private float timeElapsed = 0;
     public B_State rec_b_state;
 
     void Start()
     {
+        currentLevel = 0;
+        level_Name_Text.text = LevelList[currentLevel].LvlName;
+        level_No_Text.text = currentLevel.ToString() + ". ";
         rec_b_state = B_State.Idle;
         StartCoroutine(StartBreathPattern(noOfTimesToRepeat));
     }
@@ -54,13 +63,27 @@ public class B_Meter : MonoBehaviour
         b_Ot.fillAmount = 0f;
         timeElapsed = 0f;
         rec_b_state = B_State.Idle;
-        b_In_Duration = 2f;
-        b_Hd_Duration = 2f;
-        b_Ot_Duration = 2f;
-        delayBetweenLvlStart = 1f;
-        StartCoroutine(StartBreathPattern(noOfTimesToRepeat));
+        if(currentLevel < maxlevel)
+        {
+            currentLevel++;
+            level_Name_Text.text = LevelList[currentLevel].LvlName;
+            level_No_Text.text = currentLevel.ToString() + ". ";
+        }
+        else
+        {
+            print("Game Ended!");
+            // Show Game End Screen But first Disable 'NextLevel' Game Logic.
+        }
+        b_In_Duration = LevelList[currentLevel].b_In_Duration;
+        b_Hd_Duration = LevelList[currentLevel].b_Hd_Duration;
+        b_Ot_Duration = LevelList[currentLevel].b_Ot_Duration;
+        delayBetweenLvlStart = LevelList[currentLevel].delayBetweenLvlStart;
+        StartCoroutine(StartBreathPattern(LevelList[currentLevel].noOfTimesToRepeat));
     }
+    void UpdateLevelName()
+    {
 
+    }
     public IEnumerator StartB_Meter()
     {
         yield return new WaitForSeconds(delayBetweenLvlStart);
@@ -103,4 +126,11 @@ public class B_Meter : MonoBehaviour
     }
 
 
+}
+[System.Serializable]
+public struct Levels
+{
+    public string LvlName;
+    public float b_In_Duration, b_Hd_Duration, b_Ot_Duration, delayBetweenLvlStart;
+    public int noOfTimesToRepeat;
 }
