@@ -5,6 +5,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEditorInternal.VersionControl.ListControl;
 
+public enum BreathPhase { breathIn, breathHold, breathOut }
+
 public class B_Indicator : MonoBehaviour
 {
     [SerializeField] private Color b_Idle_Colour, b_In_Colour, b_Hd_Colour, b_Ot_Colour;
@@ -20,6 +22,7 @@ public class B_Indicator : MonoBehaviour
     public B_State b_state;
     private float currentSize;
     public bool isLevelFinished = false;
+
 
     void Start()
     {
@@ -59,7 +62,7 @@ public class B_Indicator : MonoBehaviour
         if(Input.GetKey(KeyCode.I))
         {
             b_state = B_State.In;
-            sr.color = b_In_Colour;
+            //sr.color = b_In_Colour;
 
             currentSize = transform.localScale.x + GrowthSpeed * Time.deltaTime;
             currentSize = Mathf.Clamp(currentSize, minSize, maxSize);
@@ -69,7 +72,7 @@ public class B_Indicator : MonoBehaviour
         else if (Input.GetKey(KeyCode.H))
         {
             b_state = B_State.Hold;
-            sr.color = b_Hd_Colour;
+            //sr.color = b_Hd_Colour;
             currentSize = transform.localScale.x + 0 * Time.deltaTime;
             currentSize = Mathf.Clamp(currentSize, minSize, maxSize);
             transform.localScale = new Vector3(currentSize, currentSize);
@@ -77,7 +80,7 @@ public class B_Indicator : MonoBehaviour
         else if (Input.GetKey(KeyCode.O))
         {
             b_state = B_State.Out;
-            sr.color = b_Ot_Colour;
+            //sr.color = b_Ot_Colour;
             currentSize = transform.localScale.x - ShrinkSpeed * Time.deltaTime;
             currentSize = Mathf.Clamp(currentSize, minSize, maxSize);
             transform.localScale = new Vector3(currentSize, currentSize);
@@ -85,7 +88,7 @@ public class B_Indicator : MonoBehaviour
         else
         {
             b_state = B_State.Idle;
-            sr.color = b_Idle_Colour;
+            //sr.color = b_Idle_Colour;
         }
 
         Debug.Log("Current State: " + b_state);
