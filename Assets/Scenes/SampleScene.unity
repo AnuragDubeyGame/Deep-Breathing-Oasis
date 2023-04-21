@@ -339,7 +339,7 @@ GameObject:
   - component: {fileID: 201664641}
   - component: {fileID: 201664640}
   m_Layer: 0
-  m_Name: B_Meter_Manager (2)
+  m_Name: B_Meter_Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2790,6 +2790,7 @@ MonoBehaviour:
   ScoreText: {fileID: 1278553932}
   Menu_ScoreText: {fileID: 756416516}
   b_state: 0
+  isLevelFinished: 0
 --- !u!1 &1830812122
 GameObject:
   m_ObjectHideFlags: 0
