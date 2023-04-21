@@ -9,29 +9,40 @@ public class B_Meter : MonoBehaviour
 {
     public event Action OnProgressBarFilled;
     [SerializeField] private Image b_In, b_Hd, b_Ot, p_Bar;
-    [SerializeField] private TextMeshProUGUI level_Name_Text, level_No_Text;
+    [SerializeField] private TextMeshProUGUI level_Name_Text, level_No_Text, Button_Prompt;
     [SerializeField] public float b_In_Duration, b_Hd_Duration, b_Ot_Duration, delayBetweenLvlStart;
     [SerializeField] private int noOfTimesToRepeat;
     [SerializeField] private int maxlevel;
-    [SerializeField] private GameObject GameEndManu;
+    [SerializeField] private GameObject GameEndManu, Tutorial_Panel;
 
     public List<Levels> LevelList = new List<Levels>();
-    private int currentLevel;
+    public int currentLevel;
     private float total_Duration, oneRound_Duration;
     private float timeElapsed = 0;
     private B_Indicator b_indicator;
     public B_State rec_b_state;
+    private bool isMenu = true;
 
     void Start()
     {
         currentLevel = 0;
         b_indicator = FindObjectOfType<B_Indicator>();
+       
+    }
+    public void StartLevels()
+    {
+        isMenu = false;
+        currentLevel = 0;
+        b_In_Duration = LevelList[currentLevel].b_In_Duration;
+        b_Hd_Duration = LevelList[currentLevel].b_Hd_Duration;
+        b_Ot_Duration = LevelList[currentLevel].b_Ot_Duration;
+        delayBetweenLvlStart = LevelList[currentLevel].delayBetweenLvlStart;
+        noOfTimesToRepeat = LevelList[currentLevel].noOfTimesToRepeat;
         level_Name_Text.text = LevelList[currentLevel].LvlName;
         level_No_Text.text = currentLevel.ToString() + ". ";
         rec_b_state = B_State.Idle;
-        StartCoroutine(StartBreathPattern(noOfTimesToRepeat));
+        StartCoroutine(StartBreathPattern( noOfTimesToRepeat));
     }
-
     public IEnumerator StartBreathPattern(int noOfTimes)
     {
         oneRound_Duration = b_In_Duration + b_Hd_Duration + b_Ot_Duration + delayBetweenLvlStart;
@@ -70,6 +81,7 @@ public class B_Meter : MonoBehaviour
         {
             currentLevel++;
             level_Name_Text.text = LevelList[currentLevel].LvlName;
+            Tutorial_Panel.SetActive(false);
             level_No_Text.text = currentLevel.ToString() + ". ";
         }
         else
@@ -77,7 +89,6 @@ public class B_Meter : MonoBehaviour
             print("Game Ended!");
             b_indicator.isLevelFinished = true;
             GameEndManu.SetActive(true);
-            // Show Game End Screen But first Disable 'NextLevel' Game Logic.
         }
         b_In_Duration = LevelList[currentLevel].b_In_Duration;
         b_Hd_Duration = LevelList[currentLevel].b_Hd_Duration;
@@ -85,14 +96,13 @@ public class B_Meter : MonoBehaviour
         delayBetweenLvlStart = LevelList[currentLevel].delayBetweenLvlStart;
         StartCoroutine(StartBreathPattern(LevelList[currentLevel].noOfTimesToRepeat));
     }
-    void UpdateLevelName()
-    {
 
-    }
     public IEnumerator StartB_Meter()
     {
+        if (isMenu) yield break;
         yield return new WaitForSeconds(delayBetweenLvlStart);
         rec_b_state = B_State.In;
+        Button_Prompt.text = $"Press : I";
         while (timeElapsed < b_In_Duration)
         {
             float t = timeElapsed / b_In_Duration;
@@ -103,6 +113,7 @@ public class B_Meter : MonoBehaviour
 
         timeElapsed = 0;
         rec_b_state = B_State.Hold;
+        Button_Prompt.text = $"Press : H";
         while (timeElapsed < b_Hd_Duration)
         {
             float t = timeElapsed / b_Hd_Duration;
@@ -112,6 +123,7 @@ public class B_Meter : MonoBehaviour
         }
         timeElapsed = 0;
         rec_b_state = B_State.Out;
+        Button_Prompt.text = $"Press : O";
         while (timeElapsed < b_Ot_Duration)
         {
             float t = timeElapsed / b_Ot_Duration;
