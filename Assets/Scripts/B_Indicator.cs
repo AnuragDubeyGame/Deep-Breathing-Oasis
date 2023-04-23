@@ -10,7 +10,7 @@ public class B_Indicator : MonoBehaviour
     [SerializeField] private Color b_Idle_Colour, b_In_Colour, b_Hd_Colour, b_Ot_Colour;
     [SerializeField] private float minSize, maxSize;
     [SerializeField] private GameObject LevelCompleteMenu, Timer_text;
-
+    [SerializeField] private Color Positive_ScoreColour, Negative_ScoreColour;
     [SerializeField] private List<GameObject> UIs = new List<GameObject>();
 
     private float CurrentScore;
@@ -78,13 +78,13 @@ public class B_Indicator : MonoBehaviour
         if(b_state == b_meter.rec_b_state)
         {
             CurrentScore += 25 * Time.deltaTime;
-            ScoreText.color = Color.green;
+            ScoreText.color = Positive_ScoreColour;
             UpdateScore(ScoreText, CurrentScore);
         }
         else
         {
             CurrentScore -= 40 * Time.deltaTime;
-            ScoreText.color = Color.red;
+            ScoreText.color = Negative_ScoreColour;
             UpdateScore(ScoreText, CurrentScore);
         }
         if(Input.GetKey(KeyCode.I))
