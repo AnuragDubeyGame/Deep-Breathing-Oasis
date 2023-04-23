@@ -102,7 +102,7 @@ public class B_Meter : MonoBehaviour
         if (isMenu) yield break;
         yield return new WaitForSeconds(delayBetweenLvlStart);
         rec_b_state = B_State.In;
-        Button_Prompt.text = $"Inhale \n Press : I";
+        Button_Prompt.text = $"Inhale\nHold : I";
         while (timeElapsed < b_In_Duration)
         {
             float t = timeElapsed / b_In_Duration;
@@ -113,7 +113,7 @@ public class B_Meter : MonoBehaviour
 
         timeElapsed = 0;
         rec_b_state = B_State.Hold;
-        Button_Prompt.text = $"Hold \n Press : H";
+        Button_Prompt.text = $"Hold\nHold : H";
         while (timeElapsed < b_Hd_Duration)
         {
             float t = timeElapsed / b_Hd_Duration;
@@ -123,7 +123,7 @@ public class B_Meter : MonoBehaviour
         }
         timeElapsed = 0;
         rec_b_state = B_State.Out;
-        Button_Prompt.text = $"Exhale \n Press : O";
+        Button_Prompt.text = $"Exhale\nHold : O";
         while (timeElapsed < b_Ot_Duration)
         {
             float t = timeElapsed / b_Ot_Duration;
