@@ -9,6 +9,7 @@ public class B_Meter : MonoBehaviour
 {
     public event Action OnProgressBarFilled;
     [SerializeField] private Image b_In, b_Hd, b_Ot, p_Bar;
+    [SerializeField] private TextMeshProUGUI b_Tp;
     [SerializeField] private TextMeshProUGUI level_Name_Text, level_No_Text, Button_Prompt;
     [SerializeField] public float b_In_Duration, b_Hd_Duration, b_Ot_Duration, delayBetweenLvlStart;
     [SerializeField] private int noOfTimesToRepeat;
@@ -64,6 +65,8 @@ public class B_Meter : MonoBehaviour
         {
             float t = te / duration;
             p_Bar.fillAmount = Mathf.Lerp(0, 1, t);
+
+            b_Tp.text = MathF.Round(p_Bar.fillAmount*100)+"%";
             yield return null;
             te += Time.deltaTime;
         }
