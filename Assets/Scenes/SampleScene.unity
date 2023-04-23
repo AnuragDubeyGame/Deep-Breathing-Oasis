@@ -655,11 +655,11 @@ MonoBehaviour:
   Tutorial_Panel: {fileID: 1820818515}
   LevelList:
   - LvlName: Beginner's Breath
-    b_In_Duration: 1
-    b_Hd_Duration: 1
-    b_Ot_Duration: 1
+    b_In_Duration: 3
+    b_Hd_Duration: 3
+    b_Ot_Duration: 3
     delayBetweenLvlStart: 1
-    noOfTimesToRepeat: 5
+    noOfTimesToRepeat: 3
   - LvlName: Balanced Breath
     b_In_Duration: 5
     b_Hd_Duration: 1
