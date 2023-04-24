@@ -49,11 +49,11 @@ MonoBehaviour:
   m_ActualView: {fileID: 25}
 =======
     x: 0
-    y: 462
-    width: 541
-    height: 173
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+    y: 335
+    width: 429
+    height: 300
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 19}
 >>>>>>> e3170ddbe0ccc64b5365d040ed8a22be0ce2cf14
   m_Panes:
@@ -91,7 +91,7 @@ MonoBehaviour:
 >>>>>>> e3170ddbe0ccc64b5365d040ed8a22be0ce2cf14
     x: 825
     y: 0
-    width: 541
+    width: 429
     height: 635
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
@@ -202,8 +202,8 @@ MonoBehaviour:
 >>>>>>> e3170ddbe0ccc64b5365d040ed8a22be0ce2cf14
     width: 214
     height: 386
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 16}
 >>>>>>> e3170ddbe0ccc64b5365d040ed8a22be0ce2cf14
   m_Panes:
@@ -232,7 +232,7 @@ MonoBehaviour:
     height: 332
 =======
     y: 386
-    width: 825
+    width: 937
     height: 249
 >>>>>>> e3170ddbe0ccc64b5365d040ed8a22be0ce2cf14
   m_MinSize: {x: 231, y: 271}
@@ -430,8 +430,8 @@ MonoBehaviour:
 >>>>>>> e3170ddbe0ccc64b5365d040ed8a22be0ce2cf14
     width: 611
     height: 386
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 17}
 >>>>>>> e3170ddbe0ccc64b5365d040ed8a22be0ce2cf14
   m_Panes:
@@ -1100,7 +1100,7 @@ MonoBehaviour:
     height: 311
 =======
     y: 459
-    width: 824
+    width: 936
     height: 228
 >>>>>>> e3170ddbe0ccc64b5365d040ed8a22be0ce2cf14
   m_ViewDataDictionary: {fileID: 0}
@@ -1399,7 +1399,7 @@ MonoBehaviour:
         m_IsRenaming: 0
         m_OriginalEventType: 11
         m_IsRenamingFilename: 0
-        m_ClientGUIView: {fileID: 13}
+        m_ClientGUIView: {fileID: 6}
       m_SearchString: 
     m_ExpandedScenes: []
     m_CurrenRootInstanceID: 0
@@ -1831,7 +1831,7 @@ MonoBehaviour:
     height: 311
 =======
     y: 459
-    width: 824
+    width: 936
     height: 228
 >>>>>>> e3170ddbe0ccc64b5365d040ed8a22be0ce2cf14
   m_ViewDataDictionary: {fileID: 0}
@@ -1889,7 +1889,7 @@ MonoBehaviour:
   m_ShowGizmos: 0
   m_TargetDisplay: 0
   m_ClearColor: {r: 0, g: 0, b: 0, a: 0}
-  m_TargetSize: {x: 1920, y: 1080}
+  m_TargetSize: {x: 1080, y: 1920}
   m_TextureFilterMode: 0
   m_TextureHideFlags: 61
   m_RenderIMGUI: 1
@@ -1898,23 +1898,23 @@ MonoBehaviour:
   m_VSyncEnabled: 0
   m_Gizmos: 0
   m_Stats: 0
-  m_SelectedSizes: 03000000000000000000000000000000000000000000000000000000000000000000000000000000
+  m_SelectedSizes: 07000000000000000000000000000000000000000000000000000000000000000000000000000000
   m_ZoomArea:
     m_HRangeLocked: 0
     m_VRangeLocked: 0
     hZoomLockedByDefault: 0
     vZoomLockedByDefault: 0
-    m_HBaseRangeMin: -960
-    m_HBaseRangeMax: 960
-    m_VBaseRangeMin: -540
-    m_VBaseRangeMax: 540
+    m_HBaseRangeMin: -540
+    m_HBaseRangeMax: 540
+    m_VBaseRangeMin: -960
+    m_VBaseRangeMax: 960
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
     m_VAllowExceedBaseRangeMax: 1
     m_ScaleWithWindow: 0
     m_HSlider: 0
-    m_VSlider: 0
+    m_VSlider: 1
     m_IgnoreScrollWheelUntilClicked: 0
     m_EnableMouseInput: 1
     m_EnableSliderZoomHorizontal: 0
